@@ -38,7 +38,7 @@ The accelerator is built from the following modules:
   - 4 × (3×3) convolution kernels (optional)
   - `start` signal
 
-### 🔄 Streaming Data
+###  Streaming Data
 
 - **Inputs**
   - `pixel_in [7:0]` — Grayscale input pixel (1 per clock cycle)
@@ -48,9 +48,9 @@ The accelerator is built from the following modules:
   - `pixel_out [7:0]` — Output gradient magnitude (or 0 if below threshold)
   - `valid_out` — High when `gradient_out` is valid
 
-Once 1 row is full + 2 pixels of the next row, `valid_out` follows `valid_in` with 1-cycle latency. The output magnitude is the maximum response of the 4 kernels after thresholding.
 
-### 🛠️ Control Interface (APB)
+
+###  Control Interface (APB)
 
 The module is controlled via an **AMBA APB interface**, with the following programmable registers:
 
