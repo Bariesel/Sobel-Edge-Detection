@@ -4,7 +4,7 @@ This project implements a real-time, flexible edge detection accelerator in Syst
 
 ---
 
-## 📦 Features
+##  Features
 
 - 4 parallel 3×3 convolution kernels (default: Sobel X/Y + diagonals)
 - Thresholding: output is 0 or gradient magnitude
@@ -16,7 +16,7 @@ This project implements a real-time, flexible edge detection accelerator in Syst
 
 ---
 
-## 🧠 Architecture Overview
+##  Architecture Overview
 
 The system consists of the following main modules:
 
@@ -37,9 +37,9 @@ The system consists of the following main modules:
 
 ---
 
-## 🖼️ Input/Output Interface
+##  Input/Output Interface
 
-### 🔄 Streaming Data
+###  Streaming Data
 
 - **Inputs**
   - `pixel_in [7:0]` — Grayscale input pixel (1 per clock cycle)
