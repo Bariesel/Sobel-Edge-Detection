@@ -38,11 +38,42 @@ The accelerator is built from the following modules:
   - 4 × (3×3) convolution kernels (optional)
   - `start` signal
 
-##  Input/Output Interface
+### 🔄 Streaming Data
 
-- **Input**: Stream of 8-bit grayscale pixel values (1 per clock cycle)
-- **Output**: Stream of 8-bit gradient magnitudes (or 0 if below threshold)
+- **Inputs**
+  - `pixel_in [7:0]` — Grayscale input pixel (1 per clock cycle)
+  - `valid_in` — High when `pixel_in` is valid
 
+- **Outputs**
+  - `pixel_out [7:0]` — Output gradient magnitude (or 0 if below threshold)
+  - `valid_out` — High when `gradient_out` is valid
+
+Once 1 row is full + 2 pixels of the next row, `valid_out` follows `valid_in` with 1-cycle latency. The output magnitude is the maximum response of the 4 kernels after thresholding.
+
+### 🛠️ Control Interface (APB)
+
+The module is controlled via an **AMBA APB interface**, with the following programmable registers:
+
+| Register         | Description                                  |
+|------------------|----------------------------------------------|
+| `image_width`    | Number of pixels per row                     |
+| `total_pixels`   | Total number of pixels to process            |
+| `threshold`      | Minimum gradient magnitude to keep as output |
+| `kernel_0`       | 3×3 kernel (default: Sobel X)                |
+| `kernel_1`       | 3×3 kernel (default: Sobel Y)                |
+| `kernel_2`       | 3×3 kernel (default: Diagonal 1)             |
+| `kernel_3`       | 3×3 kernel (default: Diagonal 2)             |
+| `start`          | Start processing once all configs are loaded |
+
+---
+
+## 🧠 Default Kernels
+
+```text
+Sobel X:        Sobel Y:        Diagonal 1:     Diagonal 2:
+[-1  0  1]      [-1 -2 -1]      [-2 -1  0]      [ 0 -1 -2]
+[-2  0  2]      [ 0  0  0]      [-1  0  1]      [ 1  0 -1]
+[-1  0  1]      [ 1  2  1]      [ 0  1  2]      [ 2  1  0]
 ##  How to Simulate
 
 1. Clone this repo:
