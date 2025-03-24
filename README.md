@@ -137,14 +137,15 @@ The design will read pixel values from `pixel_data.txt` and write results to `ed
 
 Once simulation is complete:
 
-1. Run the post-processing script:
+1. Copy the generated `edge_out.txt` from your simulation folder into the same directory as the Python script.
+2. Run the post-processing script:
    ```bash
    python show_edge_output.py
    ```
-2. This will:
-   - Load `edge_out.txt`
-   - Reconstruct the edge-detected image
-   - Display or save the result
+3. This will:
+   - Load `edge_out.txt`, which contains the output gradient values (one per line)
+   - Reconstruct the edge-detected image using the original width and height
+   - Display or save the final image result
 
 > ✅ This lets you visually confirm the Sobel edge detection result from the hardware output.
 
