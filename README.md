@@ -5,7 +5,7 @@ This project implements a flexible and high-throughput edge detection accelerato
 
 ## 📦 Features
 
-- Hardware convolution with 4 configurable 3×3 kernels (Sobel X/Y + diagonals by default)
+- Hardware convolution with 4 3×3 kernels (Sobel X/Y + diagonals by default)
 - Real-time edge detection using a sliding 3×3 window
 - Line buffer architecture for efficient row-wise processing
 - Thresholding logic that outputs either `0` or the gradient magnitude
@@ -32,9 +32,10 @@ The accelerator is built from the following modules:
   Exposes control and configuration registers to an external CPU via the AMBA APB protocol. Configurable parameters include:
   
   - `image_width`
+  - `image_height`
   - `total_pixels`
   - `threshold`
-  - 4 × (3×3) convolution kernels (default = Sobel & diagonals)
+  - 4 × (3×3) convolution kernels (optional)
   - `start` signal
 
 ## 🖼️ Input/Output Interface
