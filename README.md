@@ -60,19 +60,20 @@ The module is configured via an **AMBA APB interface**, with the following progr
 | Register         | Description                                                                 |
 |------------------|-----------------------------------------------------------------------------|
 | `image_width`    | Number of pixels per row                                                    |
+| `image_height`   | Number of pixels per column                                                 |
 | `total_pixels`   | Total number of pixels to process                                           |
-| `threshold`      | Minimum gradient magnitude to keep as output                               |
+| `threshold`      | Minimum gradient magnitude to keep as output                                |
 | `kernel_0`       | 3×3 kernel (default: Sobel X if all elements = 0)                           |
 | `kernel_1`       | 3×3 kernel (default: Sobel Y if all elements = 0)                           |
 | `kernel_2`       | 3×3 kernel (default: Diagonal 1 if all elements = 0)                        |
 | `kernel_3`       | 3×3 kernel (default: Diagonal 2 if all elements = 0)                        |
-| `start`          | Start processing once all configs are loaded                               |
+| `start`          | Start processing once all configs are loaded                                |
 
 > ℹ️ **Note:** If a kernel is written with all-zero values, the corresponding **default kernel** will be used internally (see below).
 
 ---
 
-## 🧠 Default Kernels
+##  Default Kernels
 
 ```text
 Sobel X:        Sobel Y:        Diagonal 1:     Diagonal 2:
