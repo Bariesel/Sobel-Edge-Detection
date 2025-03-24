@@ -149,6 +149,15 @@ Once simulation is complete:
 
 > ✅ This lets you visually confirm the Sobel edge detection result from the hardware output.
 
+---
+
+## 📚 Documentation
+
+Below are the main documents associated with this project, including the full project report and final presentation slides.
+
+📄 [Project Report (PDF)](doc/sobel_project_report.pdf)  
+📊 [Presentation Slides (PPTX)](doc/sobel_presentation.pptx)  
+🖼️ [Presentation Slides (PDF)](doc/sobel_presentation.pdf)
 
 
 
