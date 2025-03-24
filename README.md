@@ -3,7 +3,7 @@
 
 This project implements a flexible and high-throughput edge detection accelerator in SystemVerilog. While it defaults to the Sobel operator, the design supports four configurable convolution kernels (including diagonals) and can be customized at runtime via the APB protocol.
 
-## 📦 Features
+##  Features
 
 - Hardware convolution with 4 3×3 kernels (Sobel X/Y + diagonals by default)
 - Real-time edge detection using a sliding 3×3 window
@@ -12,7 +12,7 @@ This project implements a flexible and high-throughput edge detection accelerato
 - APB-based configuration interface for full control via CPU
 - Designed for FPGA/ASIC integration
 
-## 🧠 Architecture Overview
+##  Architecture Overview
 
 The accelerator is built from the following modules:
 
@@ -38,12 +38,12 @@ The accelerator is built from the following modules:
   - 4 × (3×3) convolution kernels (optional)
   - `start` signal
 
-## 🖼️ Input/Output Interface
+##  Input/Output Interface
 
 - **Input**: Stream of 8-bit grayscale pixel values (1 per clock cycle)
 - **Output**: Stream of 8-bit gradient magnitudes (or 0 if below threshold)
 
-## 🧪 How to Simulate
+##  How to Simulate
 
 1. Clone this repo:
    ```bash
