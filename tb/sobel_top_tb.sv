@@ -88,6 +88,31 @@ module sobel_top_tb;
 		end
 
 		// -------------------- APB Configuration Writes --------------------
+		// Read Configuration Parameters from config.txt
+		integer config_file;
+		integer threshold, width, height, total_pixels;
+		integer kernel1, kernel2, kernel3, kernel4;
+	
+		config_file = $fopen("config.txt", "r");
+		if (config_file == 0) begin
+			$display("ERROR: Cannot open config.txt");
+			$finish;
+		end
+	
+		// Read 8 values from the file
+		$fscanf(config_file, "%d\n", threshold);
+		$fscanf(config_file, "%d\n", width);
+		$fscanf(config_file, "%d\n", height);
+		$fscanf(config_file, "%d\n", total_pixels);
+		$fscanf(config_file, "%d\n", kernel1);
+		$fscanf(config_file, "%d\n", kernel2);
+		$fscanf(config_file, "%d\n", kernel3);
+		$fscanf(config_file, "%d\n", kernel4);
+		$fclose(config_file);
+	
+
+
+		
 		// Write Threshold (Address 0x00) = 110
 		@(posedge clk);
 		PSEL = 1; PWRITE = 1; PADDR = 32'h00; PWDATA = 8'd110;
