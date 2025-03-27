@@ -165,7 +165,10 @@ The input image was processed through the full hardware pipeline using 4 interna
 
 Below is a sample simulation waveform captured during operation. It shows valid input, convolution processing, thresholding, and edge output:
 
-![Waveform](img/waveform.png)
+![Waveform](img/waveform_1.png)
+![Waveform](img/waveform_2.png)
+![Waveform](img/waveform_3.png)
+![Waveform](img/waveform_4.png)
 
 > ✅ Signals like `valid_in`, `valid_out`, `pixel_in`, `gradient_out`, and control handshakes (e.g., `start`, `sobel_done`) are tracked to verify correct behavior over time.
 
