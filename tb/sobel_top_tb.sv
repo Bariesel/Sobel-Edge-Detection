@@ -27,18 +27,6 @@ module sobel_top_tb;
 
 	integer j=0;
 
-/*
-	// Define a 3x3 matrix with alternating 1 and -1 pattern (3-bit signed)
-	localparam signed [2:0] K1_0 =  1, K1_1 = -1, K1_2 =  1;
-	localparam signed [2:0] K1_3 = -1, K1_4 =  1, K1_5 = -1;
-	localparam signed [2:0] K1_6 =  1, K1_7 = -1, K1_8 =  1;
-
-	localparam signed [26:0] KERNEL1 = {
-		K1_0, K1_1, K1_2,
-		K1_3, K1_4, K1_5,
-		K1_6, K1_7, K1_8
-	};
-	*/
 	// Instantiate the Sobel Top Module
 	sobel_top dut (
 		.clk(clk),
@@ -82,11 +70,7 @@ module sobel_top_tb;
 		// Reset sequence
 		#20 reset_n = 1;
 
-		// Load Test Image into Memory (1 to 100)
-		for (i = 0; i < 100; i++) begin
-			test_image[i] = i + 1;
-		end
-
+		
 		// -------------------- APB Configuration Writes --------------------
 		// Read Configuration Parameters from config.txt
 		integer config_file;
@@ -113,32 +97,32 @@ module sobel_top_tb;
 
 
 		
-		// Write Threshold (Address 0x00) = 110
+		// Write Threshold (Address 0x00)
 		@(posedge clk);
-		PSEL = 1; PWRITE = 1; PADDR = 32'h00; PWDATA = 8'd110;
-		@(posedge clk);
-		PENABLE = 1;
-		@(posedge clk);
-		PSEL = 0; PENABLE = 0;
-		// Write Image Width (Address 0x04) = 512
-		@(posedge clk);
-		PSEL = 1; PWRITE = 1; PADDR = 32'h04; PWDATA = 32'd573;
+		PSEL = 1; PWRITE = 1; PADDR = 32'h00; PWDATA = threshold;
 		@(posedge clk);
 		PENABLE = 1;
 		@(posedge clk);
 		PSEL = 0; PENABLE = 0;
-
-		// Write Image Height (Address 0x08) = 512
+		// Write Image Width  (Address 0x04)
 		@(posedge clk);
-		PSEL = 1; PWRITE = 1; PADDR = 32'h08; PWDATA = 32'd568;
+		PSEL = 1; PWRITE = 1; PADDR = 32'h04; PWDATA = width;
 		@(posedge clk);
 		PENABLE = 1;
 		@(posedge clk);
 		PSEL = 0; PENABLE = 0;
 
-		// Write Total Pixels (Address 0x0C) = 262144 (512x512)
+		// Write Image Height (Address 0x08) 
 		@(posedge clk);
-		PSEL = 1; PWRITE = 1; PADDR = 32'h0C; PWDATA = 32'd325464;
+		PSEL = 1; PWRITE = 1; PADDR = 32'h08; PWDATA = height;
+		@(posedge clk);
+		PENABLE = 1;
+		@(posedge clk);
+		PSEL = 0; PENABLE = 0;
+
+		// Write Total Pixels (Address 0x0C) 
+		@(posedge clk);
+		PSEL = 1; PWRITE = 1; PADDR = 32'h0C; PWDATA = total_pixels;
 		@(posedge clk);
 		PENABLE = 1;
 		@(posedge clk);
@@ -146,7 +130,7 @@ module sobel_top_tb;
 
 		// Write Kernel1 (Address 0x10) 
 		@(posedge clk);
-		PSEL = 1; PWRITE = 1; PADDR = 32'h10; PWDATA = 27'sd0; // Example Kernel1
+		PSEL = 1; PWRITE = 1; PADDR = 32'h10; PWDATA = kernel1;
 		@(posedge clk);
 		PENABLE = 1;
 		@(posedge clk);
@@ -154,7 +138,7 @@ module sobel_top_tb;
 		
 		// Write Kernel2 (Address 0x14) 
 		@(posedge clk);
-		PSEL = 1; PWRITE = 1; PADDR = 32'h14; PWDATA = 27'sd0; // Example Kernel2
+		PSEL = 1; PWRITE = 1; PADDR = 32'h14; PWDATA = kernel2;
 		@(posedge clk);
 		PENABLE = 1;
 		@(posedge clk);
@@ -162,7 +146,7 @@ module sobel_top_tb;
 		
 		// Write Kernel3 (Address 0x18) 
 		@(posedge clk);
-		PSEL = 1; PWRITE = 1; PADDR = 32'h18; PWDATA = 27'sd0; // Example Kernel3
+		PSEL = 1; PWRITE = 1; PADDR = 32'h18; PWDATA = kernel3;
 		@(posedge clk);
 		PENABLE = 1;
 		@(posedge clk);
@@ -170,7 +154,7 @@ module sobel_top_tb;
 
 		// Write Kernel4 (Address 0x1C) 
 		@(posedge clk);
-		PSEL = 1; PWRITE = 1; PADDR = 32'h1C; PWDATA = 27'sd0; // Example Kernel4
+		PSEL = 1; PWRITE = 1; PADDR = 32'h1C; PWDATA = kernel4;
 		@(posedge clk);
 		PENABLE = 1;
 		@(posedge clk);
@@ -221,7 +205,7 @@ module sobel_top_tb;
 		$fclose(output_file);
 		$stop;
 	end
-
+/*
 	// Print Edge Output Every Cycle
 	always @(posedge clk) begin
 		if (valid_out) begin
@@ -230,6 +214,7 @@ module sobel_top_tb;
 			j++;
 		end
 	end
+ */
 
 
 endmodule
