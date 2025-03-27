@@ -155,9 +155,9 @@ Once simulation is complete:
 
 Below are the main documents associated with this project, including the full project report and final presentation slides.
 
-📄 [Project Report (PDF)](doc/sobel_project_report.pdf)  
-📊 [Presentation Slides (PPTX)](doc/sobel_presentation.pptx)  
-🖼️ [Presentation Slides (PDF)](doc/sobel_presentation.pdf)
+📄 [Project Report (PDF)](doc/sobel_final_report.pdf)  
+📊 [Presentation Slides (PPTX)](doc/final_presentation.pptx)  
+
 
 
 
