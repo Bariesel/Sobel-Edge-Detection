@@ -170,7 +170,7 @@ Below is a sample simulation waveform captured during operation. It shows valid 
 ![Waveform](img/waveform_3.png)
 ![Waveform](img/waveform_4.png)
 
-> ✅ Signals like `valid_in`, `valid_out`, `pixel_in`, `gradient_out`, and control handshakes (e.g., `start`, `sobel_done`) are tracked to verify correct behavior over time.
+> ✅ Signals like `valid_in`, `valid_out`, `pixel_in`, `pixel_out`, `sobel_done` are tracked to verify correct behavior over time.
 
 ---
 
