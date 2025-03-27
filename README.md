@@ -145,6 +145,33 @@ Once simulation completes:
 > ✅ This lets you visually compare the hardware result with the expected Sobel output.
 
 ---
+## 📊 Results
+
+This section presents the visual and functional output of the Sobel edge detection hardware.
+
+---
+
+### 🖼️ Before and After: Edge Detection
+
+| Original Grayscale Image        | Output After Sobel Edge Detection |
+|----------------------------------|------------------------------------|
+| ![Input Image](img/input.png)    | ![Edge Output](img/edge_output.png) |
+
+The input image was processed through the full hardware pipeline using 4 internal convolution kernels and thresholding. The output highlights strong edges in white (non-zero values) while suppressing background regions.
+
+---
+
+### 📈 Functional Verification (Waveform)
+
+Below is a sample simulation waveform captured during operation. It shows valid input, convolution processing, thresholding, and edge output:
+
+![Waveform](img/waveform.png)
+
+> ✅ Signals like `valid_in`, `valid_out`, `pixel_in`, `gradient_out`, and control handshakes (e.g., `start`, `sobel_done`) are tracked to verify correct behavior over time.
+
+---
+
+Let me know if you’d like help generating or annotating the waveform image for clarity!
 
 
 ## 📚 Documentation
