@@ -53,7 +53,7 @@ Once 3 full rows are buffered, `valid_out` follows `valid_in` with a short laten
 
 ---
 
-### 🛠️ Control Interface (APB)
+###  Control Interface (APB)
 
 The module is configured via an **AMBA APB interface**, with the following programmable registers:
 
@@ -83,7 +83,7 @@ Sobel X:        Sobel Y:        Diagonal 1:     Diagonal 2:
 ```
 
 
-## 🧪 Testbench Workflow (via Jupyter Notebook)
+##  Testbench Workflow (via Jupyter Notebook)
 
 This project includes a **Jupyter Notebook** that guides you through the entire workflow for preparing and visualizing Sobel edge detection using the hardware accelerator.
 
@@ -92,7 +92,7 @@ You can find the notebook in:
 
 ---
 
-### 🧩 Notebook Blocks Overview
+###  Notebook Blocks Overview
 
 The notebook is divided into clear, titled sections:
 
@@ -173,8 +173,6 @@ Below is a sample simulation waveform captured during operation. It shows valid 
 > ✅ Signals like `valid_in`, `valid_out`, `pixel_in`, `pixel_out`, `sobel_done` are tracked to verify correct behavior over time.
 
 ---
-
-Let me know if you’d like help generating or annotating the waveform image for clarity!
 
 
 ## 📚 Documentation
