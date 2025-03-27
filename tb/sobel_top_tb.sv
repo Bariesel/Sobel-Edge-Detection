@@ -49,8 +49,7 @@ module sobel_top_tb;
 	// Clock Generation (10ns period => 100 MHz)
 	always #5 clk = ~clk;
 
-	// 10x10 Test Image (from the provided image)
-	reg [7:0] test_image [0:99];  // 10x10 = 100 pixels
+	
 
 	// Initialize Testbench
 	initial begin
@@ -169,11 +168,7 @@ module sobel_top_tb;
 		PSEL = 0; PENABLE = 0;
 
 		// -------------------- Send Pixel Data --------------------
-		// First pixel: Wait one extra clock cycle
-		//@(posedge clk);
-		//@(posedge clk);
-		//pixel_in = test_image[0];  
-		//valid_in = 1'b1;  
+		
 		@(posedge clk);  // Extra delay before sending the next pixel
 
 		pixel_file = $fopen("pixel_data.txt", "r");
