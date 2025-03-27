@@ -111,9 +111,14 @@ The notebook is divided into clear, titled sections:
     - `total_pixels`
     - `threshold`
     - `kernel_0`, `kernel_1`, `kernel_2`, `kernel_3`  
-      *(each kernel is a list of 9 values representing a 3×3 matrix)*
+      > ⚙️ **Note:**  
+    > By default, all kernel values in `config.txt` are set to `0`.  
+    > This instructs the hardware to automatically use the **built-in default kernels** (Sobel X, Sobel Y, and diagonals).  
+    >  
+    > If you wish to use custom kernels instead, you can **manually edit the kernel values** in `config.txt` before running the simulation.
 
-> 📋 You will **manually copy these values from `config.txt` into your SystemVerilog testbench** before simulation.
+
+
 
 ---
 
@@ -123,23 +128,7 @@ The notebook is divided into clear, titled sections:
    - `pixel_data.txt` – input stream to the design
    - `config.txt` – reference for copying register values
    - `edge_out.txt` – create an empty file; it will be filled during simulation
-2. In your **testbench**, write the values from `config.txt` into the APB interface:
-   ```systemverilog
-   apb_write(IMAGE_WIDTH_ADDR,   <value from config.txt>);
-   apb_write(IMAGE_HEIGHT_ADDR,  <value from config.txt>);
-   apb_write(TOTAL_PIXELS_ADDR,  <value from config.txt>);
-   apb_write(THRESHOLD_ADDR,     <value from config.txt>);
-
-   // Write all kernel elements (9 per kernel)
-   apb_write(KERNEL_0_ADDR + 0,  <kernel_0[0]>);
-   apb_write(KERNEL_0_ADDR + 1,  <kernel_0[1]>);
-   ...
-   apb_write(KERNEL_3_ADDR + 8,  <kernel_3[8]>);
-
-   // Start signal
-   apb_write(START_ADDR, 1);
-   ```
-3. Run the simulation using your preferred tool (ModelSim, VCS, Verilator, etc.).
+2. Run the simulation using your preferred tool (ModelSim, VCS, Verilator, etc.).
 
 ---
 
